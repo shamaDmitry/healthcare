@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 
 const HoverMenu = ({ menuItem, subMenuItems }) => {
   const pathname = usePathname();
-  const [isDropdownVisible, setDropdownVisible] = useState(true);
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
 
   const handleMouseEnter = () => {
     setDropdownVisible(true);
@@ -51,7 +51,7 @@ const HoverMenu = ({ menuItem, subMenuItems }) => {
       </div>
 
       <ul
-        className={classNames('block absolute right-0 transition top-full', {
+        className={classNames('block absolute right-0 transition top-full z-[100] bg-white', {
           'hidden opacity-0': !isDropdownVisible,
           'show opacity-100': isDropdownVisible,
         })}

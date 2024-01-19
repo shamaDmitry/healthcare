@@ -1,113 +1,160 @@
 import Image from 'next/image';
+import DoubleArrowDown from './Components/icons/DoubleArrowDown';
+import Banner from './Components/HomePage/Banner';
+import Link from 'next/link';
+import VolunteerActivism from './Components/icons/VolunteerActivism';
+import AdminMeds from './Components/icons/AdminMeds';
+import Chat from './Components/icons/Chat';
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-between p-24 ">
-      <div className="z-10 items-center justify-between w-full max-w-5xl font-mono text-sm lg:flex">
-        <p className="fixed top-0 left-0 flex justify-center w-full pt-8 pb-6 border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex items-end justify-center w-full h-48 bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="flex gap-2 p-8 pointer-events-none place-items-center lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="h-auto max-w-full dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <section className="relative">
+      <Banner />
+
+      <section className="py-10 bg-light">
+        <div className="container">
+          <h1>We offer solutions for health and care</h1>
+
+          <div className="mb-10 bg-[url('/images/homepage/beneficiary.jpg')] min-h-[400px] flex flex-col justify-center px-8">
+            <h2 className="mb-4 text-secondary">Beneficiary</h2>
+
+            <p className="text-gentle-black">
+              Beneficiary and Caregiver Services
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-x-10">
+            <div className="p-10 bg-white text-gentle-black">
+              <p>
+                We empower patients and caregivers, helping them navigate the
+                healthcare system with knowledge and respect.
+              </p>
+
+              <p>
+                Engaging directly with patients and their families, XXXXXX
+                offers a patient-centered approach to case review and advocacy
+                services. XXXXXX's skilled clinical staff empowers patients to
+                make informed decisions regarding their plans of care and to
+                navigate their care transitions effectively.
+              </p>
+
+              <Link
+                href="/contact"
+                className="flex items-center justify-center px-5 py-2 font-bold text-white capitalize bg-secondary"
+              >
+                contact us
+              </Link>
+            </div>
+
+            <ul>
+              <li className="flex pb-4 mb-4 border-b border-separator gap-x-4">
+                <div className="flex items-center justify-center rounded-full bg-light-red w-[44px] h-[44px] flex-shrink-0">
+                  <VolunteerActivism className="text-secondary" />
+                </div>
+
+                <p>
+                  Innovators of beneficiary and caregiver engagement, the staff
+                  of XXXXXX’s specialty call center are trained to assess
+                  patients’ needs and goals to advocate for their health
+                  successes.
+                </p>
+              </li>
+
+              <li className="flex pb-4 mb-4 border-b border-separator gap-x-4">
+                <div className="flex items-center justify-center rounded-full bg-light-red w-[44px] h-[44px] flex-shrink-0">
+                  <AdminMeds className="text-secondary" />
+                </div>
+
+                <p>
+                  XXXXXX’s experienced clinical staff includes physicians,
+                  nurses, social workers, and other healthcare professionals.
+                </p>
+              </li>
+
+              <li className="flex pb-4 border-b border-separator gap-x-4">
+                <div className="flex items-center justify-center rounded-full bg-light-red w-[44px] h-[44px] flex-shrink-0">
+                  <Chat className="text-secondary" />
+                </div>
+
+                <p>
+                  XXXXXX’s experienced clinical staff includes physicians,
+                  nurses, social workers, and other healthcare professionals.
+                </p>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert w-full h-auto"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <section className="bg-light-gray">
+        <h2 className="mb-4 text-secondary">Provider</h2>
 
-      <div className="grid mb-32 text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="px-5 py-4 transition-colors border border-transparent rounded-lg group hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
+        <p className="text-gentle-black">Provider Services</p>
+
+        <div className="text-gentle-black">
+          <p>
+            We assist healthcare providers, helping them improve health
+            outcomes, address patients’ needs, and strengthen their businesses.
           </p>
-        </a>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="px-5 py-4 transition-colors border border-transparent rounded-lg group hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
+          <p>
+            Through contracts with government agencies, XXXXXX provides quality
+            oversight and auditing of healthcare organizations and provides
+            education to the provider community to improve the quality of
+            healthcare delivery.
           </p>
-        </a>
+        </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="px-5 py-4 transition-colors border border-transparent rounded-lg group hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+        <div className="grid grid-cols-2">
+          <Image
+            src="/images/homepage/image01.jpg"
+            alt=""
+            className=""
+            width={611}
+            height={664}
+            priority
+          />
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="px-5 py-4 transition-colors border border-transparent rounded-lg group hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </div>
+          <div className="p-5 bg-white">
+            <ul>
+              <li className="flex pb-4 mb-4 border-b border-separator gap-x-4">
+                <div className="flex items-center justify-center rounded-full bg-light-red w-[44px] h-[44px] flex-shrink-0">
+                  <VolunteerActivism className="text-secondary" />
+                </div>
+
+                <p>
+                  XXXXXX’s valued and distinctive team of professionals is
+                  highly respected by the healthcare industry for its expertise
+                  in revenue integrity in appeals and denials management,
+                  coding, and employee training programs.
+                </p>
+              </li>
+
+              <li className="flex pb-4 mb-4 border-b border-separator gap-x-4">
+                <div className="flex items-center justify-center rounded-full bg-light-red w-[44px] h-[44px] flex-shrink-0">
+                  <AdminMeds className="text-secondary" />
+                </div>
+
+                <p>
+                  XXXXXX’s experienced clinical staff includes physicians,
+                  nurses, social workers, and other healthcare professionals.
+                </p>
+              </li>
+
+              <li className="flex pb-4 border-b border-separator gap-x-4">
+                <div className="flex items-center justify-center rounded-full bg-light-red w-[44px] h-[44px] flex-shrink-0">
+                  <Chat className="text-secondary" />
+                </div>
+
+                <p>
+                  XXXXXX’s experienced clinical staff includes physicians,
+                  nurses, social workers, and other healthcare professionals.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </section>
   );
 }
