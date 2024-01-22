@@ -5,6 +5,8 @@ import Link from 'next/link';
 import VolunteerActivism from './Components/icons/VolunteerActivism';
 import AdminMeds from './Components/icons/AdminMeds';
 import Chat from './Components/icons/Chat';
+import CTA from './Components/blocks/CTA';
+import Card from './Components/blocks/Card';
 
 export default function Home() {
   return (
@@ -155,6 +157,34 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section className='py-10'>
+        <div className="grid grid-cols-3 gap-8">
+          <Card
+            imageSrc="https://placehold.co/600x400"
+            category="Articles"
+            date="01 May, 2023"
+            body="Mend the Gap! A New Perspective to Address Quality Concerns"
+            link="/"
+          />
+          <Card
+            imageSrc="https://placehold.co/600x400"
+            category="Articles"
+            date="01 May, 2023"
+            body="Mend the Gap! A New Perspective to Address Quality Concerns"
+            link="/"
+          />
+          <Card
+            imageSrc="https://placehold.co/600x400"
+            category="Articles"
+            date="01 May, 2023"
+            body="Mend the Gap! A New Perspective to Address Quality Concerns"
+            link="/"
+          />
+        </div>
+      </section>
+
+      <CTA />
     </section>
   );
 }
