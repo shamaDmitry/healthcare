@@ -1,20 +1,21 @@
 import Link from 'next/link';
 import Location from '../icons/Location';
 import Call from '../icons/Call';
+import Container from '../atoms/Container';
 
 const Footer = () => {
   return (
     <footer className="text-black bg-light-gray">
-      <div className="container">
+      <Container>
         <div className="grid grid-cols-2 gap-8 py-10">
-          <div>
+          <div className="flex flex-col justify-center space-y-5">
             <Link href="/">
-              <div className="flex items-center justify-center px-4 py-2 border">
+              <div className="flex items-center justify-center w-32 px-4 py-2 border">
                 Logo
               </div>
             </Link>
 
-            <p className="flex items-center gap-x-4 text-gentle-black">
+            <p className="flex items-center mb-6 gap-x-4 text-gentle-black">
               <Location />
               <span>
                 945893 Robert Rd., <br />
@@ -27,26 +28,26 @@ const Footer = () => {
             </p>
           </div>
 
-          <div>
-            <h1 className="mb-5">
+          <div className="flex flex-col justify-center">
+            <h1 className="mb-8 font-medium leading-6">
               Subscribe our newsletter and receive information about our work,
               staff, and opportunities.
             </h1>
 
-            <div className="flex mb-8">
+            <form className="flex mb-8">
               <input
                 type="text"
                 placeholder="Email address"
-                className="p-4 bg-white border border-separator"
+                className="w-full p-4 bg-white border outline-none border-separator"
               />
 
               <button className="flex items-center justify-center px-5 py-2 font-bold text-white bg-secondary">
                 SUBMIT
               </button>
-            </div>
+            </form>
 
             <div className="grid grid-cols-3 gap-4">
-              <ul className="space-y-3 text-red-black">
+              <ul className="space-y-4 font-bold text-red-black">
                 <li>
                   <Link href="/about">About</Link>
                 </li>
@@ -58,7 +59,7 @@ const Footer = () => {
                 </li>
               </ul>
 
-              <ul className="space-y-3 text-red-black">
+              <ul className="space-y-4 font-bold text-red-black">
                 <li>
                   <Link href="/">News</Link>
                 </li>
@@ -70,7 +71,7 @@ const Footer = () => {
                 </li>
               </ul>
 
-              <ul className="space-y-3 text-red-black">
+              <ul className="space-y-4 font-bold text-red-black">
                 <li>
                   <Link href="/">Privacy Policy</Link>
                 </li>
@@ -87,9 +88,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
 
-      <div className="flex items-center justify-center text-white bg-primary min-h-[50px] py-2 px-4">
+      <div className="flex items-center text-sm font-medium justify-center text-white bg-primary min-h-[50px] py-2 px-4">
         &copy; 2004 - 2023 XXXXXX LLC. All rights reserved.
       </div>
     </footer>

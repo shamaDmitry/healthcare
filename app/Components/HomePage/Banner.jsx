@@ -1,3 +1,4 @@
+import Container from '../atoms/Container';
 import DoubleArrowDown from '../icons/DoubleArrowDown';
 import PlayArrow from '../icons/PlayArrow';
 
@@ -9,7 +10,7 @@ const Banner = () => {
 
   return (
     <section className="pt-[60px] flex flex-col justify-center items-center min-h-screen bg-cover bg-right-bottom bg-no-repeat  bg-home-banner">
-      <div className="container space-y-5 text-white">
+      <Container className="space-y-5 text-white">
         <h1>Advancing healthcare quality through innovation</h1>
 
         <h2>
@@ -32,7 +33,7 @@ const Banner = () => {
           </div>
           <span className="font-bold text-white">Watch video</span>
         </button>
-      </div>
+      </Container>
     </section>
   );
 };

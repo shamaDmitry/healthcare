@@ -1,6 +1,10 @@
 const Headline = props => {
   return (
-    <h1 {...props} className="text-4xl font-medium">
+    <h1
+      className={`text-3xl font-medium ${
+        props.className ? props.className : ''
+      }`}
+    >
       {props.children}
     </h1>
   );
