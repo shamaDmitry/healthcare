@@ -1,17 +1,46 @@
+'use client';
+
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import NavigationMenu from './NavigationMenu';
 import Search from '../icons/Search';
+import classNames from 'classnames';
 
 const Header = () => {
+  const [toggle, setToggle] = useState(false);
+
+  useEffect(() => {
+    let scrollpos = window.scrollY;
+    const scrollChange = 50;
+    const add_class_on_scroll = () => setToggle(true);
+    const remove_class_on_scroll = () => setToggle(false);
+
+    window.addEventListener('scroll', function () {
+      scrollpos = window.scrollY;
+
+      if (scrollpos >= scrollChange) {
+        add_class_on_scroll();
+      } else {
+        remove_class_on_scroll();
+      }
+    });
+
+    return () => {};
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 w-full bg-transparent z-[500]">
+    <header
+      className={classNames(
+        'fixed transition top-0 left-0 w-full bg-transparent z-[500]',
+        {
+          'bg-white shadow-lg border-b-slate-500': toggle,
+        }
+      )}
+    >
       <div className="container">
-        <div className="flex justify-center h-[60px]">
-          <Link href="/">
-            <div className="flex items-center justify-center h-full px-4 py-2 border">
-              Logo
-            </div>
+        <div className="flex justify-between h-[60px]">
+          <Link href="/" className="flex self-center">
+            <div className="flex items-center px-4 py-2 border">Logo</div>
           </Link>
 
           <NavigationMenu className="mx-auto" />

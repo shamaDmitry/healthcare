@@ -2,13 +2,13 @@ import classNames from 'classnames';
 
 const Container = ({ children, className }) => {
   return (
-    <section
+    <div
       className={classNames(
         `container max-w-screen-xl px-10 ${className ? className : ''}`
       )}
     >
       {children}
-    </section>
+    </div>
   );
 };
 

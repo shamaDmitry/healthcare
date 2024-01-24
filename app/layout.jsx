@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="">
+    <html dir="ltr" lang="en" className="">
       <head>
         <link rel="icon" href="/favicon-32x32.png" sizes="any" />
       </head>
@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
       >
         <Header />
 
-        <main className="flex-1">{children}</main>
+        <main className="flex flex-col flex-1">{children}</main>
 
         <Footer />
       </body>
