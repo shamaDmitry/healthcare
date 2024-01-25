@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
@@ -11,6 +13,16 @@ module.exports = {
       center: true,
     },
     extend: {
+      keyframes: {
+        ping: {
+          '75%, 100%': {
+            transform: 'scale(1.3)',
+          },
+        },
+      },
+      animation: {
+        ping: 'ping 1.5s ease-in-out infinite',
+      },
       backgroundImage: {
         'home-banner': "url('/images/homepage/banner.jpg')",
       },
@@ -28,5 +40,20 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        {
+          'animation-delay': value => {
+            return {
+              'animation-delay': value,
+            };
+          },
+        },
+        {
+          values: theme('transitionDelay'),
+        }
+      );
+    }),
+  ],
 };

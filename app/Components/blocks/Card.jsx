@@ -5,7 +5,15 @@ import Image from 'next/image';
 const Card = ({ imageSrc, category, date, body, link }) => {
   return (
     <div className="shadow-md">
-      <Image src={imageSrc} alt="" width="100" height="0" className="w-full" />
+      <Link href={link} className="">
+        <Image
+          src={imageSrc}
+          alt=""
+          width="100"
+          height="0"
+          className="w-full"
+        />
+      </Link>
 
       <div className="flex flex-col p-4 bg-white">
         <div className="mb-4 text-sm">
