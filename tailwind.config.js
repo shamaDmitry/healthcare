@@ -13,6 +13,9 @@ module.exports = {
       center: true,
     },
     extend: {
+      margin: {
+        '15': '60px',
+      },
       keyframes: {
         ping: {
           '75%, 100%': {

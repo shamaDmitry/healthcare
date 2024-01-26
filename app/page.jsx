@@ -16,6 +16,7 @@ import Savings from './Components/icons/Savings';
 import BrightnessAlert from './Components/icons/BrightnessAlert';
 import WorkspacePremium from './Components/icons/WorkspacePremium';
 import SubHeadline from './Components/atoms/SubHeadline';
+import IconWithText from './Components/blocks/IconWithText';
 
 export default function Home() {
   return (
@@ -68,10 +69,10 @@ export default function Home() {
                 </div>
 
                 <p>
-                  Innovators of beneficiary and caregiver engagement, the staff
-                  of XXXXXX’s specialty call center are trained to assess
-                  patients’ needs and goals to advocate for their health
-                  successes.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Voluptas obcaecati ex repudiandae fuga similique voluptatem,
+                  enim porro. Numquam culpa quaerat debitis est distinctio
+                  blanditiis, et vitae voluptatibus omnis earum error.
                 </p>
               </li>
 
@@ -81,8 +82,11 @@ export default function Home() {
                 </div>
 
                 <p>
-                  XXXXXX’s experienced clinical staff includes physicians,
-                  nurses, social workers, and other healthcare professionals.
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Error laudantium accusamus, tenetur mollitia modi magnam
+                  voluptatem velit veritatis ex aliquam dolorem porro
+                  voluptatibus soluta. Suscipit atque assumenda temporibus quia?
+                  Blanditiis!
                 </p>
               </li>
 
@@ -92,8 +96,11 @@ export default function Home() {
                 </div>
 
                 <p>
-                  XXXXXX’s experienced clinical staff includes physicians,
-                  nurses, social workers, and other healthcare professionals.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Laudantium excepturi exercitationem ad maiores blanditiis ex
+                  recusandae culpa, debitis deserunt veritatis sint iste
+                  praesentium rem soluta incidunt! Beatae ratione officiis
+                  exercitationem?
                 </p>
               </li>
             </ul>
@@ -206,59 +213,37 @@ export default function Home() {
               </p>
 
               <div className="grid grid-cols-2 gap-10">
-                <div>
-                  <div className="flex items-center justify-center mb-4 rounded-full bg-light-red text-secondary w-11 h-11">
-                    <AttachMoney />
-                  </div>
+                <IconWithText
+                  icon={<AttachMoney />}
+                  text={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut
+                tempora sed eum fugit dicta atque odio praesentium esse qui
+                ipsum corporis facilis unde quod, accusamus ad suscipit,
+                neque quo nisi.`}
+                />
 
-                  <p className="mb-6 text-gray">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut
-                    tempora sed eum fugit dicta atque odio praesentium esse qui
-                    ipsum corporis facilis unde quod, accusamus ad suscipit,
-                    neque quo nisi.
-                  </p>
-                </div>
+                <IconWithText
+                  icon={<Savings />}
+                  text={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut
+                tempora sed eum fugit dicta atque odio praesentium esse qui
+                ipsum corporis facilis unde quod, accusamus ad suscipit,
+                neque quo nisi.`}
+                />
 
-                <div>
-                  <div className="flex items-center justify-center mb-4 rounded-full bg-light-red text-secondary w-11 h-11">
-                    <Savings />
-                  </div>
+                <IconWithText
+                  icon={<BrightnessAlert />}
+                  text={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut
+                tempora sed eum fugit dicta atque odio praesentium esse qui
+                ipsum corporis facilis unde quod, accusamus ad suscipit,
+                neque quo nisi.`}
+                />
 
-                  <p className="mb-6 text-gray">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Dolorum, maiores at nihil, dolor dignissimos ipsum
-                    blanditiis minus repellat obcaecati voluptates accusamus
-                    animi nisi minima ea eveniet error consequatur, delectus
-                    natus.
-                  </p>
-                </div>
-
-                <div>
-                  <div className="flex items-center justify-center mb-4 rounded-full bg-light-red text-secondary w-11 h-11">
-                    <BrightnessAlert />
-                  </div>
-
-                  <p className="mb-6 text-gray">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut
-                    tempora sed eum fugit dicta atque odio praesentium esse qui
-                    ipsum corporis facilis unde quod, accusamus ad suscipit,
-                    neque quo nisi.
-                  </p>
-                </div>
-
-                <div>
-                  <div className="flex items-center justify-center mb-4 rounded-full bg-light-red text-secondary w-11 h-11">
-                    <WorkspacePremium />
-                  </div>
-
-                  <p className="mb-6 text-gray">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Dolorum, maiores at nihil, dolor dignissimos ipsum
-                    blanditiis minus repellat obcaecati voluptates accusamus
-                    animi nisi minima ea eveniet error consequatur, delectus
-                    natus.
-                  </p>
-                </div>
+                <IconWithText
+                  icon={<WorkspacePremium />}
+                  text={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut
+                tempora sed eum fugit dicta atque odio praesentium esse qui
+                ipsum corporis facilis unde quod, accusamus ad suscipit,
+                neque quo nisi.`}
+                />
               </div>
 
               <button className="inline-flex items-center justify-center px-5 py-3 font-bold text-white capitalize bg-secondary">
@@ -298,32 +283,32 @@ export default function Home() {
               </p>
 
               <div className="grid grid-cols-2 gap-10">
-                <div>
-                  <div className="flex items-center justify-center mb-4 bg-white rounded-full text-secondary w-11 h-11">
-                    <DataTable />
-                  </div>
+                <IconWithText
+                  icon={<WorkspacePremium />}
+                  iconBg="bg-white"
+                  text={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut
+                tempora sed eum fugit dicta atque odio praesentium esse qui
+                ipsum corporis facilis unde quod, accusamus ad suscipit,
+                neque quo nisi.`}
+                />
 
-                  <p className="mb-6 text-gray">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut
-                    tempora sed eum fugit dicta atque odio praesentium esse qui
-                    ipsum corporis facilis unde quod, accusamus ad suscipit,
-                    neque quo nisi.
-                  </p>
-                </div>
+                <IconWithText
+                  icon={<DataTable />}
+                  iconBg="bg-white"
+                  text={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut
+                tempora sed eum fugit dicta atque odio praesentium esse qui
+                ipsum corporis facilis unde quod, accusamus ad suscipit,
+                neque quo nisi.`}
+                />
 
-                <div>
-                  <div className="flex items-center justify-center mb-4 bg-white rounded-full text-secondary w-11 h-11">
-                    <QueryStats />
-                  </div>
-
-                  <p className="mb-6 text-gray">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Dolorum, maiores at nihil, dolor dignissimos ipsum
-                    blanditiis minus repellat obcaecati voluptates accusamus
-                    animi nisi minima ea eveniet error consequatur, delectus
-                    natus.
-                  </p>
-                </div>
+                <IconWithText
+                  icon={<QueryStats />}
+                  iconBg="bg-white"
+                  text={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut
+                tempora sed eum fugit dicta atque odio praesentium esse qui
+                ipsum corporis facilis unde quod, accusamus ad suscipit,
+                neque quo nisi.`}
+                />
               </div>
 
               <button className="inline-flex items-center justify-center px-5 py-3 font-bold text-white capitalize bg-secondary">
