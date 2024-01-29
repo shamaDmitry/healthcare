@@ -11,6 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.18",
     "classnames": "^2.5.1",
+    "embla-carousel-react": "^8.0.0-rc21",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
