@@ -13,6 +13,9 @@ import AboutAccordion from '../Components/About/AboutAccordion';
 import OpenInNew from '../Components/icons/OpenInNew';
 import ArrowForward from '../Components/icons/ArrowForward';
 import CertificateCard from '../Components/blocks/CertificateCard';
+import CTA from '../Components/blocks/CTA';
+import LeadershipSlider from '../Components/About/LeadershipSlider';
+import CertificationsSlider from '../Components/About/CertificationsSlider';
 
 const Page = () => {
   return (
@@ -189,120 +192,7 @@ const Page = () => {
 
           <SubHeadline className="mb-6">Board of Directors</SubHeadline>
 
-          <div className="flex mb-24">
-            <p className="text-gentle-black max-w-[846px]">
-              We believe that corporate governance enhances the long-term
-              success of the organization. XXXXXX is committed to conducting its
-              business activities with integrity and excellence, ensuring the
-              trust of its customers, employees, and business partners.
-            </p>
-
-            <div className="flex ml-auto gap-x-3">
-              <button className="flex items-center justify-center w-12 h-12 transition border hover:opacity-60 border-gentle-black">
-                <ArrowForward className="rotate-180" />
-              </button>
-              <button className="flex items-center justify-center w-12 h-12 transition border hover:opacity-60 border-gentle-black">
-                <ArrowForward />
-              </button>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-3 gap-x-8">
-            <section className="flex p-6 bg-white gap-x-6">
-              <div className="overflow-hidden rounded-full w-[157px] h-[157px] shrink-0">
-                <Image
-                  src="/images/homepage/image01.jpg"
-                  alt=""
-                  className="w-full"
-                  width={611}
-                  height={664}
-                  priority
-                />
-              </div>
-
-              <div className="flex flex-col w-full">
-                <h1 className="mb-1 font-bold text-gentle-black">
-                  John C. Doe, Esq.
-                </h1>
-                <p className="text-gray">Chairman</p>
-
-                <div className="mt-auto text-right">
-                  <Link
-                    href="/more"
-                    target="_blank"
-                    className="inline-flex items-center uppercase transition hover:opacity-50 gap-x-2 text-secondary"
-                  >
-                    <span className="leading-none">SEE MORE</span>
-                    <OpenInNew />
-                  </Link>
-                </div>
-              </div>
-            </section>
-
-            <section className="flex p-6 bg-white gap-x-6">
-              <div className="overflow-hidden rounded-full w-[157px] h-[157px] shrink-0">
-                <Image
-                  src="/images/homepage/image01.jpg"
-                  alt=""
-                  className="w-full"
-                  width={611}
-                  height={664}
-                  priority
-                />
-              </div>
-
-              <div className="flex flex-col w-full">
-                <h1 className="mb-1 font-bold text-gentle-black">
-                  John C. Doe, Esq.
-                </h1>
-                <p className="text-gray">Chairman</p>
-
-                <div className="mt-auto text-right">
-                  <Link
-                    href="/more"
-                    target="_blank"
-                    className="inline-flex items-center uppercase transition hover:opacity-50 gap-x-2 text-secondary"
-                  >
-                    <span className="leading-none">SEE MORE</span>
-                    <OpenInNew />
-                  </Link>
-                </div>
-              </div>
-            </section>
-
-            <section className="flex p-6 bg-white gap-x-6">
-              <div className="overflow-hidden rounded-full w-[157px] h-[157px] shrink-0">
-                <Image
-                  src="/images/homepage/image01.jpg"
-                  alt=""
-                  className="w-full"
-                  width={611}
-                  height={664}
-                  priority
-                />
-              </div>
-
-              <div className="flex flex-col w-full">
-                <h1 className="mb-1 font-bold text-gentle-black">
-                  John C. Doe, Esq.
-                </h1>
-                <p className="text-gray">Chairman</p>
-
-                <div className="mt-auto text-right">
-                  <Link
-                    href="/more"
-                    target="_blank"
-                    className="inline-flex items-center uppercase transition hover:opacity-50 gap-x-2 text-secondary"
-                  >
-                    <span className="leading-none">SEE MORE</span>
-                    <OpenInNew />
-                  </Link>
-                </div>
-              </div>
-            </section>
-          </div>
-
-          <div className="overflow-hidden before:transition-all my-10 w-full max-w-[200px] h-[2px] bg-gray/10 relative before:h-full before:absolute before:left-0 before:top-0 before:w-1/2 before:bg-gentle-black" />
+          <LeadershipSlider />
         </Container>
       </section>
 
@@ -425,53 +315,40 @@ const Page = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-x-12">
-            <div className="grid grid-cols-2">
-              <CertificateCard />
-              <CertificateCard />
-              <CertificateCard />
-              <CertificateCard />
-              <CertificateCard />
+          <CertificationsSlider />
+
+          <div className="my-[120px] grid grid-cols-3 p-12 bg-light-gray gap-x-8">
+            <div className="font-medium text-gentle-black">
+              <p className="mb-2">Quality policy</p>
+              <p>
+                Within a culture of integrity, excellence, and innovation,
+                XXXXXX is committed to:
+              </p>
             </div>
 
             <div className="col-span-2">
-              <section>
-                <Headline className="mb-3 capitalize text-secondary">
-                  certifications
-                </Headline>
-
-                <SubHeadline className="mb-9">Our staff</SubHeadline>
-
-                <div className="mb-12 space-y-3 text-gray">
-                  <p>Appraised at CMMI for Development Level 3</p>
-
-                  <p>
-                    The Capability Maturity Model Integration (CMMI®) is an
-                    internationally recognized method for evaluating and
-                    measuring the maturity of an business processes. This
-                    certification is appraised at CMMI for Development Level 3
-                    by the CMMI Institute, assuring customers that it has
-                    well-defined, effective, and repeatable processes for
-                    managing requirements, decision-making, performance
-                    measurement, planning, and risk management. Development
-                    maturity is assessed every three years to maintain its
-                    Maturity Level 3 appraisal ratings.
-                  </p>
-                </div>
-
-                <div className="flex ml-auto gap-x-3">
-                  <button className="flex items-center justify-center w-12 h-12 transition border hover:opacity-60 border-gentle-black">
-                    <ArrowForward className="rotate-180" />
-                  </button>
-                  <button className="flex items-center justify-center w-12 h-12 transition border hover:opacity-60 border-gentle-black">
-                    <ArrowForward />
-                  </button>
-                </div>
-              </section>
+              <ul className="pl-5 mb-10 space-y-2 list-disc text-gray marker:text-gray">
+                <li>Providing quality services and products to customers</li>
+                <li>
+                  Meeting customers expectations and requirements through
+                  quality, service, and reliability
+                </li>
+                <li>Managing risk</li>
+                <li>
+                  Monitoring the performance and improving effectiveness of
+                  products and services through its Quality Management System
+                </li>
+                <li>
+                  Complying with the requirements of the Quality Management
+                  System
+                </li>
+              </ul>
             </div>
           </div>
         </Container>
       </section>
+
+      <CTA />
     </div>
   );
 };
