@@ -1,13 +1,28 @@
 'use client';
 import { Disclosure } from '@headlessui/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import ArrowDown from '../icons/ArrowDown';
 import Add from '../icons/Add';
 import Remove from '../icons/Remove';
 import classNames from 'classnames';
 import MilitaryTech from '../icons/MilitaryTech';
+import { client } from '@/lib/contentful';
 
 const AboutAccordion = () => {
+  const getData = async () => {
+    const response = await client.getEntries({
+      content_type: 'recipeCookbook',
+    });
+
+    console.log(response);
+  };
+
+  useEffect(() => {
+    getData();
+    
+    return () => {};
+  }, []);
+
   return (
     <>
       <Disclosure

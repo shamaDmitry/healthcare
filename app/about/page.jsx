@@ -11,8 +11,6 @@ import AttachMoney from '../Components/icons/AttachMoney';
 import QueryStats from '../Components/icons/QueryStats';
 import AboutAccordion from '../Components/About/AboutAccordion';
 import OpenInNew from '../Components/icons/OpenInNew';
-import ArrowForward from '../Components/icons/ArrowForward';
-import CertificateCard from '../Components/blocks/CertificateCard';
 import CTA from '../Components/blocks/CTA';
 import LeadershipSlider from '../Components/About/LeadershipSlider';
 import CertificationsSlider from '../Components/About/CertificationsSlider';

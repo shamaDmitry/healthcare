@@ -11,9 +11,12 @@ const Header = () => {
 
   useEffect(() => {
     let scrollpos = window.scrollY;
-    const scrollChange = 50;
+    const scrollChange = 1;
+
     const add_class_on_scroll = () => setToggle(true);
     const remove_class_on_scroll = () => setToggle(false);
+
+    if (scrollpos >= scrollChange) add_class_on_scroll();
 
     window.addEventListener('scroll', function () {
       scrollpos = window.scrollY;

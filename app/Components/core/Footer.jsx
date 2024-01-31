@@ -5,7 +5,7 @@ import Container from '../atoms/Container';
 
 const Footer = () => {
   return (
-    <footer className="text-black bg-light-gray">
+    <footer className="relative text-black bg-light-gray">
       <Container>
         <div className="grid grid-cols-2 gap-8 py-10">
           <div className="flex flex-col justify-center space-y-5">
