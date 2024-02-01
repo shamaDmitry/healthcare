@@ -94,13 +94,14 @@ const menu = [
   },
 ];
 
-const NavigationMenu = ({ className = '' }) => {
+const NavigationMenu = ({ headerOptions, className = '' }) => {
   return (
     <nav className={`${className} flex items-center justify-center gap-x-3`}>
       {menu.map(menuItem => {
         if (menuItem.subMenu?.length) {
           return (
             <HoverMenu
+              headerOptions={headerOptions}
               key={menuItem.id}
               menuItem={menuItem}
               subMenuItems={menuItem.subMenu}

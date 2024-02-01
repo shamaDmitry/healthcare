@@ -14,9 +14,14 @@ module.exports = {
     },
     extend: {
       margin: {
-        '15': '60px',
+        15: '60px',
       },
       keyframes: {
+        blink: {
+          '0%': { opacity: 0.2 },
+          '20%': { opacity: 1 },
+          '100%': { opacity: 0.2 },
+        },
         ping: {
           '75%, 100%': {
             transform: 'scale(1.3)',
@@ -24,6 +29,7 @@ module.exports = {
         },
       },
       animation: {
+        blink: 'blink 1.4s infinite both',
         ping: 'ping 1.5s ease-in-out infinite',
       },
       backgroundImage: {

@@ -5,9 +5,22 @@ import React, { useEffect, useState } from 'react';
 import NavigationMenu from './NavigationMenu';
 import Search from '../icons/Search';
 import classNames from 'classnames';
+import { usePathname } from 'next/navigation';
+
+const darkPaths = ['about', 'news'];
 
 const Header = () => {
+  const [headerTheme, setHeaderTheme] = useState('light');
   const [toggle, setToggle] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const isDark = darkPaths.some(item => pathname.includes(item));
+
+    isDark ? setHeaderTheme('dark') : setHeaderTheme('light');
+
+    return () => {};
+  }, [pathname]);
 
   useEffect(() => {
     let scrollpos = window.scrollY;
@@ -33,12 +46,15 @@ const Header = () => {
 
   return (
     <header
-      className={classNames(
-        'fixed transition top-0 left-0 w-full bg-transparent z-[500]',
-        {
-          'bg-white shadow-lg border-b-slate-500': toggle,
-        }
-      )}
+      className={classNames({
+        'fixed transition top-0 left-0 w-full z-[500]': true,
+        'text-white': !toggle && headerTheme === 'light',
+        'text-gentle-black': !toggle && headerTheme === 'dark',
+        'bg-white shadow-lg border-b-slate-500 text-gentle-black':
+          toggle && headerTheme === 'light',
+        'bg-primary shadow-lg border-b-slate-500 text-white':
+          toggle && headerTheme === 'dark',
+      })}
     >
       <div className="container">
         <div className="flex justify-between h-[60px]">
@@ -46,7 +62,10 @@ const Header = () => {
             <div className="flex items-center px-4 py-2 border">Logo</div>
           </Link>
 
-          <NavigationMenu className="mx-auto" />
+          <NavigationMenu
+            headerOptions={{ theme: headerTheme, toggle: toggle }}
+            className="mx-auto"
+          />
 
           <div className="flex">
             <Link
@@ -55,7 +74,13 @@ const Header = () => {
             >
               Contact us
             </Link>
-            <button className="flex items-center justify-center p-4">
+
+            <button
+              className={classNames('flex items-center justify-center p-4', {
+                'bg-white text-primary': headerTheme === 'light',
+                'bg-primary text-white': headerTheme === 'dark',
+              })}
+            >
               <Search />
             </button>
           </div>

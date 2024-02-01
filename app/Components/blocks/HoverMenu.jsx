@@ -6,9 +6,10 @@ import { useEffect, useState } from 'react';
 import ArrowDown from '../icons/ArrowDown';
 import { usePathname } from 'next/navigation';
 
-const HoverMenu = ({ menuItem, subMenuItems }) => {
+const HoverMenu = ({ headerOptions, menuItem, subMenuItems }) => {
   const pathname = usePathname();
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const { theme, toggle } = headerOptions;
 
   const handleMouseEnter = () => {
     setDropdownVisible(true);
@@ -51,10 +52,15 @@ const HoverMenu = ({ menuItem, subMenuItems }) => {
       </div>
 
       <ul
-        className={classNames('block absolute right-0 transition top-full z-[100] bg-white', {
-          'hidden opacity-0': !isDropdownVisible,
-          'show opacity-100': isDropdownVisible,
-        })}
+        className={[
+          'block absolute right-0 transition top-full z-[100]',
+          `${!isDropdownVisible ? 'hidden opacity-0' : ''}`,
+          `${isDropdownVisible ? 'show opacity-100' : ''}`,
+          `${!toggle && theme === 'light' ? 'bg-white text-gentle-black' : ''}`,
+          `${toggle && theme === 'light' ? 'bg-white text-gentle-black' : ''}`,
+          `${!toggle && theme === 'dark' ? 'bg-primary text-white' : ''}`,
+          `${toggle && theme === 'dark' ? 'bg-white text-gentle-black' : ''}`,
+        ].join(' ')}
       >
         {subMenuItems.map(subMenu => {
           return (
