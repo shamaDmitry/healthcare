@@ -8,6 +8,11 @@ const nextConfig = {
         hostname: 'placehold.co/**',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.ctfassets.net',
+        port: '',
+      },
     ],
   },
 };

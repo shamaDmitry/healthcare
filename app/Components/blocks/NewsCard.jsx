@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const NewsCard = props => {
+const NewsCard = ({ imageSrc, category, date, description, link }) => {
   return (
     <div className="overflow-hidden group before:z-10 relative before:pointer-events-none before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-gradient-to-t before:from-[#000000cc]">
       <Link href="/news/1" className="relative overflow-hidden">
