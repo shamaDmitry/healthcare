@@ -4,7 +4,6 @@ import { useState } from 'react';
 import CustomButton from '../atoms/Button';
 import LoadingDots from '../atoms/LoadingDots';
 import classNames from 'classnames';
-import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import {
   fullNameRules,
@@ -15,34 +14,36 @@ import {
   emailRules,
 } from '@/helpers/validationRules';
 import ErrorFormBlock from '../blocks/Forms/ErrorFormBlock';
+import publicClient from '@/lib/api/client/public.client';
+import toast from 'react-hot-toast';
 
 const ContactForm = () => {
-  const [isSubmitting, setisSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = async data => {
-    console.log(data);
-    // setisSubmitting(true);
-    // const { response, err } = await userApi.login(data);
-    // if (response) {
-    //   setLoading(false);
-    //   localStorage.setItem(
-    //     LOCAL_STORAGE_TOKEN_NAME,
-    //     JSON.stringify(response.token)
-    //   );
-    //   localStorage.setItem('user', JSON.stringify(response));
-    //   toast.success('success');
-    //   navigate('/home');
-    // }
-    // if (err) {
-    //   setLoading(false);
-    //   toast.error(err.response.data.message || err.message);
-    // }
+    setIsSubmitting(true);
+
+    try {
+      const response = await publicClient.post('/api/send-contact-email', data);
+
+      if (response.succsess) {
+        toast.success(response.message);
+        reset();
+      }
+      console.log('response', response);
+    } catch (err) {
+      console.log('err', err);
+      toast.error(err.response.data.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -118,13 +119,14 @@ const ContactForm = () => {
 
         <div className="flex flex-col">
           <label
-            htmlFor=""
+            htmlFor="email"
             className="block mb-3 font-medium text-gentle-black"
           >
             Email address
           </label>
           <input
             type="email"
+            id="email"
             placeholder="Email address"
             className={classNames('p-4 border outline-none border-separator', {
               'border-red-500 placeholder:text-red-500 text-red-500':
@@ -180,11 +182,11 @@ const ContactForm = () => {
             <sup className="text-red-500">*</sup>
           </label>
 
-          <div className="flex gap-x-4">
+          <div className="flex flex-wrap gap-x-4">
             <input
               id="capcha"
               name="capcha"
-              type="text"
+              type="number"
               {...register('capcha', {
                 ...requiredFieldRule,
                 ...capchaFieldRule,
@@ -202,6 +204,12 @@ const ContactForm = () => {
             <div className="flex items-center justify-center p-4 text-white bg-primary w-44">
               123456
             </div>
+
+            {errors.capcha && (
+              <div className="w-full">
+                <ErrorFormBlock message={errors.capcha.message} />
+              </div>
+            )}
           </div>
         </div>
 
@@ -216,11 +224,7 @@ const ContactForm = () => {
         type="submit"
         className="w-full text-white bg-secondary hover:bg-secondary/80 h-[58px]"
       >
-        {isSubmitting ? (
-          <LoadingDots color="bg-white"></LoadingDots>
-        ) : (
-          <span>SUBMIT</span>
-        )}
+        {isSubmitting ? <LoadingDots color="bg-white" /> : <span>SUBMIT</span>}
       </CustomButton>
     </form>
   );

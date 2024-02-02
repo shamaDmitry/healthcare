@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Footer from './Components/core/Footer';
 import Header from './Components/core/Header';
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,6 +21,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.className} flex flex-col min-h-screen dark:bg-slate-900 dark:text-white`}
       >
+        <Toaster />
+
         <Header />
 
         <main className="flex flex-col flex-1">{children}</main>

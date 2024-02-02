@@ -11,7 +11,3 @@ export async function GET(request) {
 
   return Response.json({ test: 'test' });
 }
-
-export async function POST(request) {
-  return Response.json({ body: request.body });
-}
