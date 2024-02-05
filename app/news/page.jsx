@@ -9,7 +9,7 @@ import { contentfulClient } from '../libs/contentful';
 import CategoryLinks from '../Components/News/CategoryLinks';
 
 async function getData() {
-  const news = contentfulClient.getEntries({ content_type: 'newsPost' });
+  const news = await contentfulClient.getEntries({ content_type: 'newsPost' });
 
   return news;
 }

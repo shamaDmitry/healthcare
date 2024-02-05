@@ -34,6 +34,7 @@ module.exports = {
       },
       backgroundImage: {
         'home-banner': "url('/images/homepage/banner.jpg')",
+        'services-banner': "url('/images/services/background.jpg')",
       },
       colors: {
         primary: 'rgba(27, 54, 100, 1)',

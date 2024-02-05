@@ -7,7 +7,7 @@ import CustomButton from '../atoms/Button';
 const CTA = props => {
   return (
     <section className="text-white bg-[url('/images/cta/background.jpg')] bg-center bg-no-repeat bg-cover flex flex-col justify-center min-h-[420px]">
-      <Container className="flex flex-col items-center space-y-6">
+      <Container className="flex flex-col items-center space-y-9">
         <Headline className="">Let`s have a talk</Headline>
 
         <CustomButton

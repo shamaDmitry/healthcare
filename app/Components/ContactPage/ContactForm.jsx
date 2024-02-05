@@ -46,6 +46,8 @@ const ContactForm = () => {
     }
   };
 
+  console.log('errors', errors);
+
   return (
     <form
       noValidate
@@ -76,7 +78,8 @@ const ContactForm = () => {
             name="fullName"
             type="text"
             placeholder="Full name"
-            className={classNames('p-4 border outline-none border-separator', {
+            className={classNames(`p-4 border outline-none`, {
+              'border-separator': !errors.fullName,
               'border-red-500 placeholder:text-red-500 text-red-500':
                 errors.fullName,
             })}
@@ -104,7 +107,8 @@ const ContactForm = () => {
             id="phone"
             name="phone"
             placeholder="Mobile phone"
-            className={classNames('p-4 border outline-none border-separator', {
+            className={classNames('p-4 border outline-none', {
+              'border-separator': !errors.phone,
               'border-red-500 placeholder:text-red-500 text-red-500':
                 errors.phone,
             })}
@@ -128,7 +132,8 @@ const ContactForm = () => {
             type="email"
             id="email"
             placeholder="Email address"
-            className={classNames('p-4 border outline-none border-separator', {
+            className={classNames('p-4 border outline-none', {
+              'border-separator': !errors.email,
               'border-red-500 placeholder:text-red-500 text-red-500':
                 errors.email,
             })}
@@ -159,13 +164,11 @@ const ContactForm = () => {
               ...requiredFieldRule,
               ...messageRules,
             })}
-            className={classNames(
-              'p-4 border outline-none border-separator min-h-40',
-              {
-                'border-red-500 placeholder:text-red-500 text-red-500':
-                  errors.message,
-              }
-            )}
+            className={classNames('p-4 border outline-none min-h-40', {
+              'border-separator': !errors.message,
+              'border-red-500 placeholder:text-red-500 text-red-500':
+                errors.message,
+            })}
           />
 
           {errors.message && (
@@ -192,13 +195,11 @@ const ContactForm = () => {
                 ...capchaFieldRule,
               })}
               placeholder="Your message"
-              className={classNames(
-                'p-4 border outline-none border-separator',
-                {
-                  'border-red-500 placeholder:text-red-500 text-red-500':
-                    errors.capcha,
-                }
-              )}
+              className={classNames('p-4 border outline-none', {
+                'border-separator': !errors.capcha,
+                'border-red-500 placeholder:text-red-500 text-red-500':
+                  errors.capcha,
+              })}
             />
 
             <div className="flex items-center justify-center p-4 text-white bg-primary w-44">
