@@ -37,16 +37,12 @@ const ContactForm = () => {
         toast.success(response.message);
         reset();
       }
-      console.log('response', response);
     } catch (err) {
-      console.log('err', err);
       toast.error(err.response.data.message);
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  console.log('errors', errors);
 
   return (
     <form

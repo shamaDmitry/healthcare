@@ -5,11 +5,13 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import ArrowDown from '../icons/ArrowDown';
 import { usePathname } from 'next/navigation';
+import { useActivePath } from '@/hooks/useActivePath';
 
 const HoverMenu = ({ headerOptions, menuItem, subMenuItems }) => {
   const pathname = usePathname();
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const { theme, toggle } = headerOptions;
+  const checkActivePath = useActivePath();
 
   const handleMouseEnter = () => {
     setDropdownVisible(true);
@@ -30,10 +32,13 @@ const HoverMenu = ({ headerOptions, menuItem, subMenuItems }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="flex ">
+      <div className="flex">
         <Link
           href={menuItem.href}
-          className="flex items-center px-2 py-2 hover:underline"
+          className={classNames({
+            'flex items-center px-2 py-2 hover:underline': true,
+            'underline font-bold': checkActivePath(menuItem.href),
+          })}
         >
           {menuItem.title}
         </Link>
@@ -67,7 +72,12 @@ const HoverMenu = ({ headerOptions, menuItem, subMenuItems }) => {
             <li key={subMenu.id} className="border border-b-0 last:border-b">
               <Link
                 href={`${menuItem.href}${subMenu.href}`}
-                className="block px-3 py-2 hover:underline whitespace-nowrap"
+                className={classNames({
+                  'block px-3 py-2 hover:underline whitespace-nowrap': true,
+                  'font-bold underline': checkActivePath(
+                    `${menuItem.href}${subMenu.href}`
+                  ),
+                })}
               >
                 {subMenu.title}
               </Link>

@@ -4,6 +4,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import HoverMenu from '../blocks/HoverMenu';
+import { useActivePath } from '@/hooks/useActivePath';
+import classNames from 'classnames';
+import { usePathname } from 'next/navigation';
 
 const menu = [
   {
@@ -41,22 +44,22 @@ const menu = [
       {
         id: uuidv4(),
         title: 'Quality Improvement Organization',
-        href: '/quality improvement organization',
+        href: '/quality-improvement-organization',
       },
       {
         id: uuidv4(),
         title: 'Program Integrity and Peer Review',
-        href: '/Program Integrity and Peer Review',
+        href: '/program-integrity-and-peer-review',
       },
       {
         id: uuidv4(),
         title: 'Advocacy, Outreach, and Education',
-        href: '/Advocacy, Outreach, and Education',
+        href: '/advocacy',
       },
       {
         id: uuidv4(),
         title: 'Data and Analytics',
-        href: '/Data and Analytics',
+        href: '/data-analytics',
       },
     ],
   },
@@ -68,12 +71,12 @@ const menu = [
       {
         id: uuidv4(),
         title: 'Information Technology Services',
-        href: '/Information Technology Services',
+        href: '/information-technology-services',
       },
       {
         id: uuidv4(),
         title: 'Software Platforms',
-        href: '/Software Platforms',
+        href: '/software-platforms',
       },
     ],
   },
@@ -95,6 +98,8 @@ const menu = [
 ];
 
 const NavigationMenu = ({ headerOptions, className = '' }) => {
+  const checkActivePath = useActivePath();
+
   return (
     <nav className={`${className} flex items-center justify-center gap-x-3`}>
       {menu.map(menuItem => {
@@ -113,7 +118,10 @@ const NavigationMenu = ({ headerOptions, className = '' }) => {
           <Link
             key={menuItem.id}
             href={menuItem.href}
-            className="px-3 py-2 hover:underline"
+            className={classNames({
+              'px-3 py-2 hover:underline': true,
+              'underline font-bold': checkActivePath(menuItem.href),
+            })}
           >
             {menuItem.title}
           </Link>
