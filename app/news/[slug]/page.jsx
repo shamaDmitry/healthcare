@@ -3,11 +3,21 @@ import Headline from '@/app/Components/atoms/Headline';
 import Card from '@/app/Components/blocks/Card';
 import NewsCard from '@/app/Components/blocks/NewsCard';
 import ArrowBackward from '@/app/Components/icons/ArrowBackward';
+import { contentfulClient } from '@/app/libs/contentful';
+import Image from 'next/image';
 import Link from 'next/link';
 
-const Page = ({ params }) => {
+async function getData(params) {
+  return await contentfulClient.getEntry(params.slug);
+}
+
+const Page = async ({ params }) => {
+  const data = await getData(params);
+
   return (
     <div className="flex-1 bg-light pt-[60px] mb-10">
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+
       <Container className="mb-[140px]">
         <div className="my-10">
           <Link
@@ -22,12 +32,19 @@ const Page = ({ params }) => {
           </Link>
         </div>
 
-        <Headline className="mb-4">
-          Lorem ipsum dolor sit amet consec tetur adipi scing elit
-        </Headline>
+        <Headline className="mb-4">{data.fields.title}</Headline>
       </Container>
 
-      <div className="min-h-[520px] bg-[url('/images/news/news01.jpg')] bg-center bg-no-repeat bg-cover"></div>
+      <div className={`min-h-[520px] relative`}>
+        <Image
+          src={`https:${data.fields.heroImage.fields.file.url}`}
+          alt=""
+          className="absolute top-0 left-0 object-cover w-full h-full"
+          width={1000}
+          height={1000}
+          priority
+        />
+      </div>
 
       <Container className="">
         <div className="grid grid-cols-3 gap-16">
@@ -36,18 +53,22 @@ const Page = ({ params }) => {
               <div className="flex flex-col items-center justify-center">
                 <h4 className="mb-2 text-lg text-gray">Category</h4>
                 <p className="font-medium text-gentle-black">
-                  Innovation stories
+                  {data.fields.category}
                 </p>
               </div>
 
               <div className="flex flex-col items-center justify-center">
                 <h4 className="mb-2 text-lg text-gray">Published on</h4>
-                <p className="font-medium text-gentle-black">01 May, 2023</p>
+                <p className="font-medium text-gentle-black">
+                  {data.fields.publishDate}
+                </p>
               </div>
 
               <div className="flex flex-col items-center justify-center">
                 <h4 className="mb-2 text-lg text-gray">Share</h4>
-                <p className="font-medium text-gentle-black">01 May, 2023</p>
+                <p className="font-medium text-gentle-black">
+                  {data.fields.publishDate}
+                </p>
               </div>
             </div>
 
