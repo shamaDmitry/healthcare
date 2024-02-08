@@ -22,6 +22,7 @@ const CategoryLinks = async ({ activeLink }) => {
           'underline font-bold': activeLink.toLowerCase() === 'all',
         })}
         scroll={false}
+        prefetch
       >
         All
       </Link>

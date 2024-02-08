@@ -12,7 +12,7 @@ async function getData(query) {
     'fields.highlights': false,
     order: '-sys.createdAt',
     content_type: 'newsPost',
-    query: query === 'all' ? '' : query,
+    'fields.category': query === 'all' ? '' : query,
   });
 
   return news;
@@ -29,9 +29,6 @@ async function getHighlights() {
 }
 
 const Page = async ({ params, searchParams }) => {
-  console.log('params', params);
-  console.log('searchParams', searchParams);
-
   const category = searchParams?.category || 'all';
   const news = await getData(category);
   const highlights = await getHighlights();
@@ -44,25 +41,14 @@ const Page = async ({ params, searchParams }) => {
 
         {highlights.items.length === 3 ? (
           <div className="grid grid-cols-3 gap-4 mb-10">
-            {highlights.items.map((item, index) => {
-              if (index === 0) {
-                return (
-                  <div className="grid col-span-2" key={index}>
-                    <NewsCard />
-                  </div>
-                );
-              }
-              if (index !== 0) {
-                return (
-                  <div
-                    className="grid grid-flow-row grid-rows-2 gap-4"
-                    key={index}
-                  >
-                    <NewsCard />
-                  </div>
-                );
-              }
-            })}
+            <div className="grid col-span-2">
+              <NewsCard data={highlights.items[0]} />
+            </div>
+
+            <div className="grid grid-flow-row grid-rows-2 gap-4">
+              <NewsCard data={highlights.items[1]} />
+              <NewsCard data={highlights.items[2]} />
+            </div>
           </div>
         ) : (
           <p>not 3</p>

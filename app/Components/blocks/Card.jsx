@@ -23,7 +23,7 @@ const Card = ({ imageSrc, category, date, description, link }) => {
 
           <span>|</span>
 
-          <Link href="#">{date}</Link>
+          <p>{date}</p>
         </div>
 
         <p className="mb-10">{description}</p>
