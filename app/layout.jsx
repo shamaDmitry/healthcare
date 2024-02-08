@@ -3,6 +3,8 @@ import './globals.css';
 import Footer from './Components/core/Footer';
 import Header from './Components/core/Header';
 import { Toaster } from 'react-hot-toast';
+import { Suspense } from 'react';
+import Loading from './loading';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,9 +26,9 @@ export default function RootLayout({ children }) {
         <Toaster />
 
         <Header />
-
-        <main className="flex flex-col flex-1">{children}</main>
-
+        <Suspense fallback={<Loading />}>
+          <main className="flex flex-col flex-1">{children}</main>
+        </Suspense>
         <Footer />
       </body>
     </html>
