@@ -9,6 +9,8 @@ import CategoryLinks from '../Components/News/CategoryLinks';
 
 async function getData(query) {
   const news = await contentfulClient.getEntries({
+    'fields.highlights': false,
+    order: '-sys.createdAt',
     content_type: 'newsPost',
     query: query === 'all' ? '' : query,
   });
@@ -16,9 +18,23 @@ async function getData(query) {
   return news;
 }
 
-const Page = async ({ searchParams }) => {
+async function getHighlights() {
+  const highlights = await contentfulClient.getEntries({
+    'fields.highlights': true,
+    order: '-sys.createdAt',
+    content_type: 'newsPost',
+  });
+
+  return highlights;
+}
+
+const Page = async ({ params, searchParams }) => {
+  console.log('params', params);
+  console.log('searchParams', searchParams);
+
   const category = searchParams?.category || 'all';
   const news = await getData(category);
+  const highlights = await getHighlights();
 
   return (
     <div className="flex-1 bg-light pt-[60px]">
@@ -26,17 +42,33 @@ const Page = async ({ searchParams }) => {
         <Headline className="mb-10">News</Headline>
         <SubHeadline className="mb-5">Highlights</SubHeadline>
 
-        {/* <div className="grid grid-cols-3 gap-4 mb-10">
-          <div className="grid col-span-2">
-            <NewsCard />
+        {highlights.items.length === 3 ? (
+          <div className="grid grid-cols-3 gap-4 mb-10">
+            {highlights.items.map((item, index) => {
+              if (index === 0) {
+                return (
+                  <div className="grid col-span-2" key={index}>
+                    <NewsCard />
+                  </div>
+                );
+              }
+              if (index !== 0) {
+                return (
+                  <div
+                    className="grid grid-flow-row grid-rows-2 gap-4"
+                    key={index}
+                  >
+                    <NewsCard />
+                  </div>
+                );
+              }
+            })}
           </div>
+        ) : (
+          <p>not 3</p>
+        )}
 
-          <div className="grid grid-flow-row grid-rows-2 gap-4">
-            <NewsCard />
-
-            <NewsCard />
-          </div>
-        </div> */}
+        {/* <pre>{JSON.stringify(highlights, null, 2)}</pre> */}
 
         <CategoryLinks activeLink={category} />
 
@@ -62,7 +94,13 @@ const Page = async ({ searchParams }) => {
             })}
         </div>
 
-        {/* <Paginate /> */}
+        {/* <Paginate
+          itemsPerPage={2}
+          totalData={news.total}
+          paginate={paginate}
+          previousPage={previousPage}
+          nextPage={nextPage}
+        /> */}
       </Container>
     </div>
   );
