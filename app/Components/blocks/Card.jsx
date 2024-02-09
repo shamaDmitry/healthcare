@@ -17,7 +17,7 @@ const Card = ({ imageSrc, category, date, description, link }) => {
 
       <div className="flex flex-col flex-1 p-4 bg-white">
         <div className="flex mb-4 text-sm gap-x-2">
-          <Link href="#" className="font-bold hover:underline">
+          <Link href={`/category/${category}`} className="font-bold hover:underline">
             {category}
           </Link>
 
