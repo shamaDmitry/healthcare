@@ -7,7 +7,7 @@ import Search from '../icons/Search';
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
 
-const darkPaths = ['about', 'news'];
+const darkPaths = ['about', 'news', 'technology'];
 
 const Header = () => {
   const [headerTheme, setHeaderTheme] = useState('light');
