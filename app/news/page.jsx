@@ -54,8 +54,6 @@ const Page = async ({ params, searchParams }) => {
           <p>not 3</p>
         )}
 
-        {/* <pre>{JSON.stringify(highlights, null, 2)}</pre> */}
-
         <CategoryLinks activeLink={category} />
 
         <div className="grid grid-cols-3 gap-x-6 gap-y-12">

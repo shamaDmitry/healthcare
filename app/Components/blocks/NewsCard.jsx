@@ -22,13 +22,13 @@ const NewsCard = ({ data }) => {
       </Link>
       <div className="absolute bottom-0 left-0 z-10 w-full text-white p-9">
         <div className="flex items-center gap-2 mb-2 text-sm text-white">
-          <Link href="/category" className="hover:underline">
+          <Link href={`/category/${category}`} className="hover:underline">
             {category}
           </Link>
 
           <div className="w-[1px] bg-current h-[12px]"></div>
 
-          <p className="">{date}</p>
+          <p>{date}</p>
         </div>
 
         <p className="overflow-hidden text-nowrap text-ellipsis">

@@ -5,16 +5,28 @@ import React, { useEffect, useState } from 'react';
 import NavigationMenu from './NavigationMenu';
 import Search from '../icons/Search';
 import classNames from 'classnames';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
-const darkPaths = ['about', 'news', 'technology'];
+const darkPaths = ['about', 'news', 'technology', 'category', 'search'];
 
 const Header = () => {
+  const [searchTerm, setSearchTerm] = useState('');
   const [headerTheme, setHeaderTheme] = useState('light');
   const [toggle, setToggle] = useState(false);
   const pathname = usePathname();
+  const [showSearchInput, setShowSearchInput] = useState(false);
+  const router = useRouter();
+
+  const handleSearch = event => {
+    if (event.keyCode === 13 && event.target.value.length) {
+      router.push(`/search?term=${searchTerm}`);
+    }
+  };
 
   useEffect(() => {
+    setShowSearchInput(false);
+    setSearchTerm('');
+
     const isDark = darkPaths.some(item => pathname.includes(item));
 
     isDark ? setHeaderTheme('dark') : setHeaderTheme('light');
@@ -75,14 +87,36 @@ const Header = () => {
               Contact us
             </Link>
 
-            <button
-              className={classNames('flex items-center justify-center p-4', {
-                'bg-white text-primary': headerTheme === 'light',
-                'bg-primary text-white': headerTheme === 'dark',
-              })}
-            >
-              <Search />
-            </button>
+            <div className="relative self-stretch">
+              <input
+                value={searchTerm}
+                onChange={e => setSearchTerm(e.target.value)}
+                onKeyDown={e => handleSearch(e)}
+                type="text"
+                className={classNames({
+                  'absolute right-0 top-full h-full px-4 py-2 border shadow-lg border-primary outline-none text-gentle-black': true,
+                  'opacity-0 hidden': !showSearchInput,
+                })}
+                placeholder="Search"
+              />
+
+              <button
+                onClick={() => {
+                  setShowSearchInput(prevState => !prevState);
+                  setSearchTerm('');
+                }}
+                className={classNames(
+                  'flex items-center justify-center p-4 h-full transition',
+                  {
+                    'bg-white text-primary': headerTheme === 'light',
+                    'bg-primary text-white': headerTheme === 'dark',
+                    'opacity-50': showSearchInput,
+                  }
+                )}
+              >
+                <Search />
+              </button>
+            </div>
           </div>
         </div>
       </div>
