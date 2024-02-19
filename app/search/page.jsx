@@ -1,5 +1,6 @@
 import Container from '../Components/atoms/Container';
 import Headline from '../Components/atoms/Headline';
+import Card from '../Components/blocks/Card';
 import { contentfulClient } from '../libs/contentful';
 
 async function getSearch(term) {
@@ -20,7 +21,7 @@ const Page = async ({ params, searchParams }) => {
         <Container className="">
           <Headline className="text-center">Search:</Headline>
 
-          <p> Nothing is here</p>
+          <p>Nothing is here</p>
         </Container>
       </div>
     );
@@ -41,6 +42,23 @@ const Page = async ({ params, searchParams }) => {
         <pre className="h-64 overflow-auto">
           {JSON.stringify(data, null, 2)}
         </pre>
+
+        <div className="grid grid-cols-3 gap-4">
+          {data.items.map(item => {
+            return (
+              <Card
+                key={item.sys.id}
+                imageSrc={`https:${item.fields.heroImage.fields.file.url}`}
+                category={item.fields.category}
+                date={item.fields.publishDate}
+                description={
+                  item.fields.description.content[0].content[0].value
+                }
+                link={`/news/${item.sys.id}`}
+              />
+            );
+          })}
+        </div>
       </Container>
     </div>
   );
