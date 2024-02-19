@@ -20,6 +20,7 @@ const Header = () => {
   const handleSearch = event => {
     if (event.keyCode === 13 && event.target.value.length) {
       router.push(`/search?term=${searchTerm}`);
+      setShowSearchInput(false);
     }
   };
 
@@ -68,8 +69,8 @@ const Header = () => {
           toggle && headerTheme === 'dark',
       })}
     >
-      <div className="container">
-        <div className="flex justify-between h-[60px]">
+      <div className="container px-5">
+        <div className="flex justify-between h-[60px] space-x-4">
           <Link href="/" className="flex self-center">
             <div className="flex items-center px-4 py-2 border">Logo</div>
           </Link>
@@ -82,7 +83,7 @@ const Header = () => {
           <div className="flex">
             <Link
               href="/contact"
-              className="flex items-center justify-center px-5 py-2 font-bold text-white bg-secondary"
+              className="flex items-center justify-center px-5 py-2 font-bold text-white whitespace-nowrap bg-secondary"
             >
               Contact us
             </Link>

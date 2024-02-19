@@ -324,7 +324,7 @@ export default function Home() {
           <div className="flex items-center px-20 relative bg-[url('/images/homepage/about-us.jpg')] min-h-[412px] bg-center bg-no-repeat bg-cover">
             <div className="bg-gradient-to-r from-[#000000c9] h-full pointer-events-none absolute top-0 left-0 w-full" />
 
-            <div className="relative w-1/2 text-white">
+            <div className="relative text-white md:w-1/2">
               <Headline className="mb-6">About us</Headline>
 
               <p className="mb-6 font-medium">
@@ -343,7 +343,7 @@ export default function Home() {
         <Container>
           <Headline className="mb-5">Latest news</Headline>
 
-          <div className="grid grid-cols-3 gap-8 mb-12">
+          <div className="grid gap-4 sm:grid-cols-3 sm:gap-8 sm:mb-12">
             <Card
               imageSrc="https://placehold.co/600x400"
               category="Articles"

@@ -39,11 +39,7 @@ const Page = async ({ params, searchParams }) => {
           Founded: <span className="font-bold">{data.total}</span>
         </p>
 
-        <pre className="h-64 overflow-auto">
-          {JSON.stringify(data, null, 2)}
-        </pre>
-
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {data.items.map(item => {
             return (
               <Card

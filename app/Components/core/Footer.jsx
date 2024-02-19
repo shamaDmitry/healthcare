@@ -7,8 +7,8 @@ const Footer = () => {
   return (
     <footer className="relative text-black bg-light-gray">
       <Container>
-        <div className="grid grid-cols-2 gap-8 py-10">
-          <div className="flex flex-col justify-center space-y-5">
+        <div className="grid grid-cols-1 gap-8 py-10 md:grid-cols-2">
+          <div className="flex flex-col space-y-5">
             <Link href="/">
               <div className="flex items-center justify-center w-32 px-4 py-2 border">
                 Logo
@@ -46,43 +46,28 @@ const Footer = () => {
               </button>
             </form>
 
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               <ul className="space-y-4 font-bold text-red-black">
                 <li>
                   <Link href="/about">About</Link>
                 </li>
                 <li>
-                  <Link href="/">Services</Link>
+                  <Link href="/services">Services</Link>
                 </li>
                 <li>
-                  <Link href="/">Technology</Link>
-                </li>
-              </ul>
-
-              <ul className="space-y-4 font-bold text-red-black">
-                <li>
-                  <Link href="/">News</Link>
-                </li>
-                <li>
-                  <Link href="/">Career</Link>
-                </li>
-                <li>
-                  <Link href="/">Contact</Link>
+                  <Link href="/technology">Technology</Link>
                 </li>
               </ul>
 
               <ul className="space-y-4 font-bold text-red-black">
                 <li>
-                  <Link href="/">Privacy Policy</Link>
+                  <Link href="/news">News</Link>
                 </li>
                 <li>
-                  <Link href="/">Terms of Use</Link>
+                  <Link href="/career">Career</Link>
                 </li>
                 <li>
-                  <Link href="/">Accessibility</Link>
-                </li>
-                <li>
-                  <Link href="/">Ethics Website</Link>
+                  <Link href="/contact">Contact</Link>
                 </li>
               </ul>
             </div>
@@ -90,7 +75,7 @@ const Footer = () => {
         </div>
       </Container>
 
-      <div className="flex items-center text-sm font-medium justify-center text-white bg-primary min-h-[50px] py-2 px-4">
+      <div className="flex items-center text-sm font-medium justify-center text-center text-white bg-primary min-h-[50px] py-2 px-4">
         &copy; 2004 - 2023 XXXXXX LLC. All rights reserved.
       </div>
     </footer>

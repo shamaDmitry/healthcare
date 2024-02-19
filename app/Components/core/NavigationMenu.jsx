@@ -101,7 +101,9 @@ const NavigationMenu = ({ headerOptions, className = '' }) => {
   const checkActivePath = useActivePath();
 
   return (
-    <nav className={`${className} flex items-center justify-center gap-x-3`}>
+    <nav
+      className={`${className} flex items-center justify-center md:flex-row flex-col gap-x-3`}
+    >
       {menu.map(menuItem => {
         if (menuItem.subMenu?.length) {
           return (
