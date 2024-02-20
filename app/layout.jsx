@@ -26,6 +26,7 @@ export default function RootLayout({ children }) {
         <Toaster />
 
         <Header />
+
         <Suspense fallback={<Loading />}>
           <main className="flex flex-col flex-1">{children}</main>
         </Suspense>

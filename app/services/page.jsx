@@ -62,11 +62,12 @@ const Page = () => {
             <Image
               src="/images/services/image03.jpg"
               alt=""
-              className="max-h-[500px]"
+              className="max-h-[500px] flex-shrink-0 object-cover"
               width={611}
               height={500}
               priority
             />
+
             <div className="w-full">
               <ServicesAccordion />
             </div>
@@ -98,7 +99,7 @@ const Page = () => {
             <Image
               src="/images/services/image05.jpg"
               alt=""
-              className="max-h-[500px]"
+              className="max-h-[500px] flex-shrink-0 object-cover"
               width={611}
               height={500}
               priority

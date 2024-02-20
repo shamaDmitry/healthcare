@@ -6,6 +6,8 @@ import NavigationMenu from './NavigationMenu';
 import Search from '../icons/Search';
 import classNames from 'classnames';
 import { usePathname, useRouter } from 'next/navigation';
+import { useBreakpoint } from 'use-breakpoint';
+import { BREAKPOINTS } from '@/helpers/const';
 
 const darkPaths = ['about', 'news', 'technology', 'category', 'search'];
 
@@ -14,22 +16,43 @@ const Header = () => {
   const [headerTheme, setHeaderTheme] = useState('light');
   const [toggle, setToggle] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const [showSearchInput, setShowSearchInput] = useState(false);
 
   const pathname = usePathname();
-  const [showSearchInput, setShowSearchInput] = useState(false);
   const router = useRouter();
+
+  const { breakpoint } = useBreakpoint(BREAKPOINTS);
+
+  const clearHeaderState = () => {
+    setShowMenu(false);
+    setToggle(false);
+    setShowSearchInput(false);
+    setSearchTerm('');
+  };
 
   const handleSearch = event => {
     if (event.keyCode === 13 && event.target.value.length) {
-      router.push(`/search?term=${searchTerm}`);
-      setShowSearchInput(false);
+      router.push(`/search?term=${searchTerm}`, { scroll: true });
+
+      clearHeaderState();
     }
   };
 
   useEffect(() => {
-    setShowMenu(false);
-    setShowSearchInput(false);
-    setSearchTerm('');
+    clearHeaderState();
+    return () => {};
+  }, [breakpoint]);
+
+  useEffect(() => {
+    showMenu && document.body.classList.add('overflow-hidden');
+
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [showMenu]);
+
+  useEffect(() => {
+    clearHeaderState();
 
     const isDark = darkPaths.some(item => pathname.includes(item));
 
@@ -73,21 +96,30 @@ const Header = () => {
       })}
     >
       <div className="container px-5">
-        <div className="flex justify-between lg:h-[60px] lg:space-x-4 flex-wrap lg:flex-nowrap">
-          <Link href="/" className="flex self-center w-full lg:w-auto">
+        <div className="flex justify-between lg:h-[60px] lg:space-x-4 py-2 lg:flex-nowrap">
+          <Link
+            href="/"
+            className="flex self-center w-full lg:w-auto"
+            scroll={true}
+          >
             <div className="flex items-center px-4 py-2 border">Logo</div>
           </Link>
 
           <NavigationMenu
+            searchOptions={{
+              searchTerm,
+              setSearchTerm,
+              handleSearch,
+            }}
             headerOptions={{
-              theme: headerTheme,
-              toggle: toggle,
-              showMenu: showMenu,
-              setShowMenu: setShowMenu,
+              headerTheme,
+              toggle,
+              showMenu,
+              setShowMenu,
             }}
           />
 
-          <div className="flex order-1 w-1/2 lg:w-auto">
+          <div className="hidden lg:flex">
             <Link
               href="/contact"
               className="flex items-center justify-center px-5 py-2 font-bold text-white whitespace-nowrap bg-secondary"

@@ -6,19 +6,29 @@ import { useEffect, useState } from 'react';
 import ArrowDown from '../icons/ArrowDown';
 import { usePathname } from 'next/navigation';
 import { useActivePath } from '@/hooks/useActivePath';
+import { BREAKPOINTS } from '@/helpers/const';
+import { useBreakpoint } from 'use-breakpoint';
 
 const HoverMenu = ({ headerOptions, menuItem, subMenuItems }) => {
+  const { breakpoint } = useBreakpoint(BREAKPOINTS);
+
   const pathname = usePathname();
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const { theme, toggle } = headerOptions;
+  const { headerTheme, toggle } = headerOptions;
+
+  useEffect(() => {
+    setDropdownVisible(false);
+    return () => {};
+  }, [breakpoint]);
+
   const checkActivePath = useActivePath();
 
   const handleMouseEnter = () => {
-    setDropdownVisible(true);
+    ['lg', 'xl', '2xl'].includes(breakpoint) && setDropdownVisible(true);
   };
 
   const handleMouseLeave = () => {
-    setDropdownVisible(false);
+    ['lg', 'xl', '2xl'].includes(breakpoint) && setDropdownVisible(false);
   };
 
   useEffect(() => {
@@ -32,8 +42,7 @@ const HoverMenu = ({ headerOptions, menuItem, subMenuItems }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {JSON.stringify(isDropdownVisible)}
-      <div className="flex">
+      <div className="flex justify-between">
         <Link
           href={menuItem.href}
           className={classNames({
@@ -47,8 +56,7 @@ const HoverMenu = ({ headerOptions, menuItem, subMenuItems }) => {
         <button
           type="button"
           className="px-1 outline-none"
-          // onClick={() => setDropdownVisible(prevState => !prevState)}
-          onClick={() => setDropdownVisible(true)}
+          onClick={() => setDropdownVisible(prevState => !prevState)}
         >
           <ArrowDown
             className={classNames('transition cursor-pointer', {
@@ -58,15 +66,16 @@ const HoverMenu = ({ headerOptions, menuItem, subMenuItems }) => {
         </button>
       </div>
 
+      {/* prettier-ignore */}
       <ul
         className={[
           'block lg:absolute right-0 transition top-full z-[100]',
           `${!isDropdownVisible ? 'hidden opacity-0' : ''}`,
           `${isDropdownVisible ? 'show opacity-100' : ''}`,
-          `${!toggle && theme === 'light' ? 'bg-white text-gentle-black' : ''}`,
-          `${toggle && theme === 'light' ? 'bg-white text-gentle-black' : ''}`,
-          `${!toggle && theme === 'dark' ? 'bg-primary text-white' : ''}`,
-          `${toggle && theme === 'dark' ? 'bg-white text-gentle-black' : ''}`,
+          `${!toggle && headerTheme === 'light' ? 'bg-white text-gentle-black' : ''}`,
+          `${toggle && headerTheme === 'light' ? 'bg-white text-gentle-black' : ''}`,
+          `${!toggle && headerTheme === 'dark' ? 'bg-primary text-white' : ''}`,
+          `${toggle && headerTheme === 'dark' ? 'bg-white text-gentle-black' : ''}`,
         ].join(' ')}
       >
         {subMenuItems.map(subMenu => {

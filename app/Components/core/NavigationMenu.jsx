@@ -1,124 +1,44 @@
 'use client';
 
 import Link from 'next/link';
-import { v4 as uuidv4 } from 'uuid';
 import HoverMenu from '../blocks/HoverMenu';
 import { useActivePath } from '@/hooks/useActivePath';
 import classNames from 'classnames';
-import { usePathname } from 'next/navigation';
 import Hamburger from '../icons/Hamburger';
+import { MENU } from '@/helpers/const';
 
-const menu = [
-  {
-    id: uuidv4(),
-    title: 'About',
-    href: '/about',
-    subMenu: [
-      {
-        id: uuidv4(),
-        title: 'Company',
-        href: '/company',
-      },
-      {
-        id: uuidv4(),
-        title: 'Quality',
-        href: '/quality',
-      },
-      {
-        id: uuidv4(),
-        title: 'Leadership',
-        href: '/leadership',
-      },
-      {
-        id: uuidv4(),
-        title: 'Work',
-        href: '/work',
-      },
-    ],
-  },
-  {
-    id: uuidv4(),
-    title: 'Services',
-    href: '/services',
-    subMenu: [
-      {
-        id: uuidv4(),
-        title: 'Quality Improvement Organization',
-        href: '/quality-improvement-organization',
-      },
-      {
-        id: uuidv4(),
-        title: 'Program Integrity and Peer Review',
-        href: '/program-integrity-and-peer-review',
-      },
-      {
-        id: uuidv4(),
-        title: 'Advocacy, Outreach, and Education',
-        href: '/advocacy',
-      },
-      {
-        id: uuidv4(),
-        title: 'Data and Analytics',
-        href: '/data-analytics',
-      },
-    ],
-  },
-  {
-    id: uuidv4(),
-    title: 'Technology',
-    href: '/technology',
-    subMenu: [
-      {
-        id: uuidv4(),
-        title: 'Information Technology Services',
-        href: '/information-technology-services',
-      },
-      {
-        id: uuidv4(),
-        title: 'Software Platforms',
-        href: '/software-platforms',
-      },
-    ],
-  },
-  {
-    id: uuidv4(),
-    title: 'News',
-    href: '/news',
-  },
-  {
-    id: uuidv4(),
-    title: 'Career',
-    href: '/career',
-  },
-  {
-    id: uuidv4(),
-    title: 'Contact',
-    href: '/contact',
-  },
-];
-
-const NavigationMenu = ({ headerOptions, className }) => {
+const NavigationMenu = ({ searchOptions, headerOptions }) => {
   const checkActivePath = useActivePath();
+  const { toggle, showMenu, setShowMenu, headerTheme } = headerOptions;
+  const { searchTerm, setSearchTerm, handleSearch } = searchOptions;
 
   return (
-    <div className="flex items-center order-2 w-1/2 lg:mx-auto lg:order-1 lg:w-auto">
+    <div className="flex items-center lg:mx-auto lg:w-auto">
       <button
         className="px-2 lg:hidden"
-        onClick={() => headerOptions.setShowMenu(prevState => !prevState)}
+        onClick={() => setShowMenu(prevState => !prevState)}
       >
         <Hamburger className="w-10 h-10" />
       </button>
 
       <nav
         className={classNames(
-          `${className} z-50 lg:flex items-center justify-center lg:flex-row flex-col gap-x-3 w-full absolute top-full left-0 lg:relative lg:top-auto lg:left-auto `,
+          `z-50 p-4 items-center lg:justify-center lg:flex-row flex-col gap-x-3 w-full absolute top-full left-0 lg:relative lg:top-auto lg:left-auto `,
           {
-            'flex flex-col': headerOptions.showMenu,
-            hidden: !headerOptions.showMenu,
+            'flex-col flex overflow-y-scroll h-[calc(100vh-58px)]': showMenu,
+            'hidden lg:flex': !showMenu,
+
+            'bg-primary':
+              (headerTheme === 'light' && showMenu) ||
+              (headerTheme === 'dark' && toggle && showMenu),
+
+            'bg-white':
+              (headerTheme === 'light' && toggle && showMenu) ||
+              (headerTheme === 'dark' && showMenu && !toggle),
           }
         )}
       >
-        {menu.map(menuItem => {
+        {MENU.map(menuItem => {
           if (menuItem.subMenu?.length) {
             return (
               <HoverMenu
@@ -143,6 +63,19 @@ const NavigationMenu = ({ headerOptions, className }) => {
             </Link>
           );
         })}
+
+        <div className="flex w-full p-4 mt-auto lg:hidden">
+          <input
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+            onKeyDown={e => handleSearch(e)}
+            type="text"
+            className={classNames({
+              'px-4 py-2 border shadow-lg w-full border-primary outline-none text-gentle-black': true,
+            })}
+            placeholder="Search"
+          />
+        </div>
       </nav>
     </div>
   );
