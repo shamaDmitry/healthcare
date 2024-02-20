@@ -13,6 +13,8 @@ const Header = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [headerTheme, setHeaderTheme] = useState('light');
   const [toggle, setToggle] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+
   const pathname = usePathname();
   const [showSearchInput, setShowSearchInput] = useState(false);
   const router = useRouter();
@@ -25,6 +27,7 @@ const Header = () => {
   };
 
   useEffect(() => {
+    setShowMenu(false);
     setShowSearchInput(false);
     setSearchTerm('');
 
@@ -70,17 +73,21 @@ const Header = () => {
       })}
     >
       <div className="container px-5">
-        <div className="flex justify-between h-[60px] space-x-4">
-          <Link href="/" className="flex self-center">
+        <div className="flex justify-between lg:h-[60px] lg:space-x-4 flex-wrap lg:flex-nowrap">
+          <Link href="/" className="flex self-center w-full lg:w-auto">
             <div className="flex items-center px-4 py-2 border">Logo</div>
           </Link>
 
           <NavigationMenu
-            headerOptions={{ theme: headerTheme, toggle: toggle }}
-            className="mx-auto"
+            headerOptions={{
+              theme: headerTheme,
+              toggle: toggle,
+              showMenu: showMenu,
+              setShowMenu: setShowMenu,
+            }}
           />
 
-          <div className="flex">
+          <div className="flex order-1 w-1/2 lg:w-auto">
             <Link
               href="/contact"
               className="flex items-center justify-center px-5 py-2 font-bold text-white whitespace-nowrap bg-secondary"
@@ -95,7 +102,7 @@ const Header = () => {
                 onKeyDown={e => handleSearch(e)}
                 type="text"
                 className={classNames({
-                  'absolute right-0 top-full h-full px-4 py-2 border shadow-lg border-primary outline-none text-gentle-black': true,
+                  'z-50 absolute right-0 top-full h-full px-4 py-2 border shadow-lg border-primary outline-none text-gentle-black': true,
                   'opacity-0 hidden': !showSearchInput,
                 })}
                 placeholder="Search"

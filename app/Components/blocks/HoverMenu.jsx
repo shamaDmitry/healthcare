@@ -28,10 +28,11 @@ const HoverMenu = ({ headerOptions, menuItem, subMenuItems }) => {
 
   return (
     <div
-      className="relative"
+      className="relative w-full lg:w-auto"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      {JSON.stringify(isDropdownVisible)}
       <div className="flex">
         <Link
           href={menuItem.href}
@@ -46,7 +47,8 @@ const HoverMenu = ({ headerOptions, menuItem, subMenuItems }) => {
         <button
           type="button"
           className="px-1 outline-none"
-          onClick={() => setDropdownVisible(prevState => !prevState)}
+          // onClick={() => setDropdownVisible(prevState => !prevState)}
+          onClick={() => setDropdownVisible(true)}
         >
           <ArrowDown
             className={classNames('transition cursor-pointer', {
@@ -58,7 +60,7 @@ const HoverMenu = ({ headerOptions, menuItem, subMenuItems }) => {
 
       <ul
         className={[
-          'block absolute right-0 transition top-full z-[100]',
+          'block lg:absolute right-0 transition top-full z-[100]',
           `${!isDropdownVisible ? 'hidden opacity-0' : ''}`,
           `${isDropdownVisible ? 'show opacity-100' : ''}`,
           `${!toggle && theme === 'light' ? 'bg-white text-gentle-black' : ''}`,
