@@ -13,8 +13,8 @@ const Banner = () => {
 
   return (
     <section className="relative pt-[60px] flex flex-col justify-center items-center min-h-screen bg-cover bg-right-bottom bg-no-repeat  bg-home-banner">
-      <Container className="flex-1 flex flex-col items-center justify-center pt-[150px] pb-10 text-white before:bg-black/40 before:absolute before:w-full before:h-full before:top-0">
-        <Headline className="relative mb-6">
+      <Container className="flex-1 flex flex-col items-center pt-[150px] pb-10 text-white before:bg-black/40 before:absolute before:w-full before:h-full before:top-0">
+        <Headline className="relative mb-6 text-center">
           Advancing healthcare quality through innovation
         </Headline>
 
@@ -37,14 +37,6 @@ const Banner = () => {
             </span>
           </button>
         </div>
-
-        <Link
-          href="#more"
-          className="flex items-center gap-4 mt-auto font-bold text-white animate-bounce"
-        >
-          <DoubleArrowDown />
-          Discover more
-        </Link>
       </Container>
     </section>
   );
