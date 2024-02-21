@@ -30,19 +30,8 @@ const CertificationsSlider = () => {
   }, [emblaApi, activeSlideIndex]);
 
   return (
-    <div className="grid grid-cols-3 gap-x-12">
-      <div className="grid grid-cols-2 gap-5">
-        {/* <div className="grid items-center gap-5">
-          <CertificateCard />
-          <CertificateCard />
-          <CertificateCard />
-        </div>
-
-        <div className="grid items-center gap-5">
-          <CertificateCard />
-          <CertificateCard />
-        </div> */}
-
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12">
+      <div className="flex gap-5 pb-5 mb-5 overflow-auto sm:grid-cols-1 md:mb-0 md:grid md:grid-cols-1 lg:grid-cols-2">
         {slideData.map((slide, index) => {
           return (
             <CertificateCard
@@ -58,7 +47,7 @@ const CertificationsSlider = () => {
         })}
       </div>
 
-      <div className="col-span-2">
+      <div className="md:col-span-2">
         <section>
           <Headline className="mb-3 capitalize text-secondary">
             certifications

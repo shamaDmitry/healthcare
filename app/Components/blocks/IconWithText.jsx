@@ -1,12 +1,12 @@
 const IconWithText = ({
-  className,
+  className = '',
   icon,
   iconBg = 'bg-light-red',
   iconSize = 'w-11 h-11',
   text,
 }) => {
   return (
-    <div className={className}>
+    <div className={`${className} flex-col flex items-center sm:block`}>
       <div
         className={`flex items-center justify-center mb-6 rounded-full text-secondary ${iconSize} ${iconBg}`}
       >

@@ -24,21 +24,10 @@ const Page = () => {
             healthcare quality, manage costs, and empower patients and their
             caregiver
           </SubHeadline>
-
-          <Link
-            href="#more"
-            className="flex items-center gap-4 mt-auto font-bold text-white animate-bounce"
-          >
-            <DoubleArrowDown />
-            Discover more
-          </Link>
         </Container>
       </section>
 
-      <section
-        id="more"
-        className="py-[120px] bg-light-gray  bg-[url('/images/services/image02.jpg')] min-h-[590px] bg-no-repeat bg-right-top flex flex-col"
-      >
+      <section className="py-[120px] bg-light-gray bg-[url('/images/services/image02.jpg')] min-h-[590px] bg-no-repeat bg-right-top flex flex-col">
         <Container>
           <div className="flex items-center mb-20 gap-x-8">
             <ChartData className="text-secondary" />

@@ -57,7 +57,7 @@ export default async function Home() {
             })}
           </div>
 
-          <div className="px-12 text-center md:text-right">
+          <div className="px-12 text-center">
             <Link
               href="/news"
               className="inline-flex items-center justify-center px-5 py-3 font-bold text-white capitalize bg-secondary"
