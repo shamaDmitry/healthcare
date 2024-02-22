@@ -40,7 +40,7 @@ const Page = async ({ params, searchParams }) => {
         <SubHeadline className="mb-5">Highlights</SubHeadline>
 
         {highlights.items.length === 3 ? (
-          <div className="grid grid-cols-3 gap-4 mb-10">
+          <div className="grid gap-4 mb-10 md:grid-cols-3">
             <div className="grid col-span-2">
               <NewsCard data={highlights.items[0]} />
             </div>
@@ -51,7 +51,10 @@ const Page = async ({ params, searchParams }) => {
             </div>
           </div>
         ) : (
-          <p>not 3</p>
+          <div className="grid grid-cols-2 gap-4 mb-10">
+            <NewsCard data={highlights.items[0]} />
+            <NewsCard data={highlights.items[1]} />
+          </div>
         )}
 
         <CategoryLinks activeLink={category} />
