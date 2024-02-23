@@ -20,8 +20,8 @@ const Page = () => {
 
       <div className="bg-light-gray">
         <Container className="relative">
-          <div className="grid grid-cols-2 mb-10 gap-x-12">
-            <div className="-translate-y-32 bg-white shadow-lg p-9">
+          <div className="grid mb-10 md:grid-cols-2 md:gap-x-12">
+            <div className="mt-10 bg-white shadow-lg md:mt-0 md:-translate-y-32 p-9">
               <SubHeadline className="mb-4">Join XXXXXX Team</SubHeadline>
 
               <p className="font-medium mb-9">
@@ -38,7 +38,7 @@ const Page = () => {
 
               <CustomButton
                 as="Link"
-                href=""
+                href="#"
                 className="text-white bg-secondary hover:bg-secondary/80 h-[58px] inline-flex items-center justify-center px-5 py-2 font-bold capitalize gap-x-2"
               >
                 <span>view all open positions</span> <ArrowForward />

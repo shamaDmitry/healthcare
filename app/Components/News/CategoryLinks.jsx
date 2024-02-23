@@ -14,7 +14,7 @@ const CategoryLinks = async ({ activeLink }) => {
   const category = await getData();
 
   return (
-    <div className="mb-10 flex font-medium items-center *:flex *:items-center text-gray gap-x-2 *:before:w-[1px] *:before:bg-current *:before:h-[12px] *:before:mr-3 *:before:ml-1">
+    <div className="overflow-auto mb-10 flex font-medium items-center *:flex *:items-center text-gray gap-x-2 *:before:w-[1px] *:before:bg-current *:before:h-[12px] *:before:mr-3 *:before:ml-1">
       <Link
         href="/news"
         className={classNames({
@@ -34,7 +34,7 @@ const CategoryLinks = async ({ activeLink }) => {
             key={item.sys.id}
             scroll={false}
             className={classNames({
-              'hover:underline': true,
+              'hover:underline text-nowrap': true,
               'underline font-bold':
                 activeLink.toLowerCase() ===
                 item.fields.categoryName.toLowerCase(),

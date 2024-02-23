@@ -44,7 +44,7 @@ const Page = async ({ params }) => {
 
   return (
     <div className="flex-1 bg-light pt-[60px] mb-10">
-      <Container className="mb-[140px]">
+      <Container className="mb-10 lg:mb-[140px]">
         <div className="my-10">
           <Link
             href="/news"
@@ -72,10 +72,10 @@ const Page = async ({ params }) => {
         />
       </div>
 
-      <Container className="">
-        <div className="grid grid-cols-3 gap-16">
-          <div className="col-span-2">
-            <div className="grid grid-cols-3 p-8 -translate-y-1/2 bg-white divide-x shadow divide-separator">
+      <Container>
+        <div className="grid grid-cols-1 lg:gap-16 lg:grid-cols-3">
+          <div className="md:col-span-2">
+            <div className="grid *:pt-2 *:lg:pt-0 py-4 my-4 space-y-4 lg:space-y-0 bg-white divide-y shadow lg:space-x-2 lg:divide-y-0 md:p-8 lg:-translate-y-1/2 lg:grid-cols-3 lg:divide-x divide-separator">
               <div className="flex flex-col items-center justify-center">
                 <h4 className="mb-2 text-lg text-gray">Category</h4>
                 <p className="font-medium text-gentle-black">
@@ -116,7 +116,7 @@ const Page = async ({ params }) => {
               Highlights news
             </h3>
 
-            <div className="grid grid-rows-3 gap-4">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
               {highlights.items.map(data => {
                 return <NewsCard data={data} key={data} />;
               })}
@@ -127,7 +127,7 @@ const Page = async ({ params }) => {
         <section>
           <Headline className="mb-4">More like this</Headline>
 
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {highlights.items.map(item => {
               return (
                 <Card

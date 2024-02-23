@@ -47,7 +47,7 @@ const ContactForm = () => {
   return (
     <form
       noValidate
-      className="bg-white shadow-lg px-9 text-gentle-black py-9"
+      className="px-5 py-10 bg-white shadow-lg lg:p-9 text-gentle-black"
       onSubmit={handleSubmit(onSubmit)}
     >
       <p className="mb-5 font-bold">Send us a message</p>
@@ -181,7 +181,7 @@ const ContactForm = () => {
             <sup className="text-red-500">*</sup>
           </label>
 
-          <div className="flex flex-wrap gap-x-4">
+          <div className="flex flex-col gap-4 md:flex-row">
             <input
               id="capcha"
               name="capcha"
@@ -191,14 +191,14 @@ const ContactForm = () => {
                 ...capchaFieldRule,
               })}
               placeholder="Your message"
-              className={classNames('p-4 border outline-none', {
+              className={classNames('p-4 border outline-none w-full', {
                 'border-separator': !errors.capcha,
                 'border-red-500 placeholder:text-red-500 text-red-500':
                   errors.capcha,
               })}
             />
 
-            <div className="flex items-center justify-center p-4 text-white bg-primary w-44">
+            <div className="flex items-center justify-center w-full p-4 text-white bg-primary md:w-44">
               123456
             </div>
 

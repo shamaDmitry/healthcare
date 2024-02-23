@@ -9,7 +9,7 @@ const NewsCard = ({ data }) => {
   const link = data.sys.id;
 
   return (
-    <div className="flex overflow-hidden group before:z-10 relative before:pointer-events-none before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-gradient-to-t before:from-[#000000cc]">
+    <div className="min-h-60 flex overflow-hidden group before:z-10 relative before:pointer-events-none before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-gradient-to-t before:from-[#000000cc]">
       <Link href={`/news/${link}`} className="relative flex-1 overflow-hidden">
         <Image
           src={`https:${imageSrc}`}
@@ -20,7 +20,7 @@ const NewsCard = ({ data }) => {
           priority
         />
       </Link>
-      <div className="absolute bottom-0 left-0 z-10 w-full text-white p-9">
+      <div className="absolute bottom-0 left-0 z-10 w-full p-4 text-white md:p-9">
         <div className="flex items-center gap-2 mb-2 text-sm text-white">
           <Link href={`/category/${category}`} className="hover:underline">
             {category}

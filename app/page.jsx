@@ -6,6 +6,7 @@ import PayerServices from './Components/HomePage/PayerServices';
 import Government from './Components/HomePage/Government';
 import AboutUs from './Components/HomePage/AboutUs';
 import LatestNews from './Components/News/LatestNews';
+import VideoModal from './Components/HomePage/VideoModal';
 
 export default async function Home() {
   return (

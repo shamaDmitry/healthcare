@@ -3,7 +3,6 @@ import Headline from '../Components/atoms/Headline';
 import SubHeadline from '../Components/atoms/SubHeadline';
 import NewsCard from '../Components/blocks/NewsCard';
 import Card from '../Components/blocks/Card';
-import Paginate from '../Components/blocks/Pagination';
 import { contentfulClient } from '../libs/contentful';
 import CategoryLinks from '../Components/News/CategoryLinks';
 
@@ -39,9 +38,9 @@ const Page = async ({ params, searchParams }) => {
         <Headline className="mb-10">News</Headline>
         <SubHeadline className="mb-5">Highlights</SubHeadline>
 
-        {highlights.items.length === 3 ? (
+        {highlights.items.length !== 3 ? (
           <div className="grid gap-4 mb-10 md:grid-cols-3">
-            <div className="grid col-span-2">
+            <div className="grid md:col-span-2">
               <NewsCard data={highlights.items[0]} />
             </div>
 
@@ -51,7 +50,7 @@ const Page = async ({ params, searchParams }) => {
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-4 mb-10">
+          <div className="grid gap-4 mb-10 md:grid-cols-2">
             <NewsCard data={highlights.items[0]} />
             <NewsCard data={highlights.items[1]} />
           </div>
@@ -59,7 +58,7 @@ const Page = async ({ params, searchParams }) => {
 
         <CategoryLinks activeLink={category} />
 
-        <div className="grid grid-cols-3 gap-x-6 gap-y-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-y-12 gap-y-6">
           {!news.items.length && (
             <p className="font-medium capitalize text-gray">nothing is here</p>
           )}
@@ -80,14 +79,6 @@ const Page = async ({ params, searchParams }) => {
               );
             })}
         </div>
-
-        {/* <Paginate
-          itemsPerPage={2}
-          totalData={news.total}
-          paginate={paginate}
-          previousPage={previousPage}
-          nextPage={nextPage}
-        /> */}
       </Container>
     </div>
   );
